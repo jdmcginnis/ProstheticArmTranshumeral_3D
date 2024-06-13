@@ -7,7 +7,7 @@ using UnityEngine;
 //      - If you want to make changes to the settings, do it in Settings.json
 public static class Settings
 {
-    public static readonly bool usingController;
+    public static readonly bool usingKeyboard;
     public static readonly float predictionRate;
     public static readonly int[] activeGrasps;
 
@@ -20,7 +20,7 @@ public static class Settings
             string loadSettingsData = File.ReadAllText(filePath);
             SettingsData settingsData = JsonUtility.FromJson<SettingsData>(loadSettingsData);
 
-            usingController = settingsData.UsingController;
+            usingKeyboard = settingsData.UsingKeyboard;
             predictionRate = settingsData.PredictionRate;
             activeGrasps = settingsData.ActiveGrasps;
 
@@ -33,7 +33,7 @@ public static class Settings
     // Helper class for loading data
     private class SettingsData
     {
-        public bool UsingController;
+        public bool UsingKeyboard;
         public float PredictionRate;
         public int[] ActiveGrasps;
     }
