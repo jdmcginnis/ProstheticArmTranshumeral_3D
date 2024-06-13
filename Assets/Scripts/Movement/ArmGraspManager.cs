@@ -61,6 +61,17 @@ public class ArmGraspManager : MonoBehaviour
         graspFullyOpen = true;
     }
 
+    private void OnEnable()
+    {
+        InputManager.OnNewGraspSelected += ChangeGrasp;
+    }
+
+    private void OnDisable()
+    {
+        InputManager.OnNewGraspSelected -= ChangeGrasp;
+    }
+
+
     private void ChangeGrasp(GraspTypes.GraspNames newGrasp)
     {
         Debug.Log("We have changed over from grasp: " + currentGrasp.ToString() + " to " + newGrasp.ToString());

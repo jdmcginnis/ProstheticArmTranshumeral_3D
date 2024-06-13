@@ -6,7 +6,7 @@ public class WristExtensionGrasp : IGraspFormat
 {
     public float[] maxJointAngles { get; set; } = new float[]
     {
-        45, // WristFlexion
+        -45, // WristFlexion
         0, // WristRotation
         0, // IndexJoint0
         0, // IndexJoint1
