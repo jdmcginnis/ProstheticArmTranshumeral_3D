@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-public class TripodGrasp : IGraspFormat
+public class TripodGrasp : GraspProperties
 {
-    public float[] maxJointAngles { get; set; } = new float[]
+    public override float[] maxJointAngles { get; set; } = new float[]
     {
         0, // WristFlexion
         0, // WristRotation
@@ -24,4 +21,6 @@ public class TripodGrasp : IGraspFormat
         0, // ThumbJoint1
         35 // ThumbJoint2
     };
+
+    public override float jointSpeed { get; set; } = 250;
 }

@@ -1,12 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-public class IndexFlexionGrasp : IGraspFormat
+public class IndexFlexionGrasp : GraspProperties
 {
-    public float[] maxJointAngles { get; set; } = new float[]
+    public override float[] maxJointAngles { get; set; } = new float[]
     {
-        0, // WristFlexion
+        0, // WristFlexionExtension
         0, // WristRotation
         30, // IndexJoint0
         80, // IndexJoint1
@@ -24,4 +21,7 @@ public class IndexFlexionGrasp : IGraspFormat
         0, // ThumbJoint1
         0 // ThumbJoint2
     };
+
+    public override float jointSpeed { get; set; } = 250;
+
 }

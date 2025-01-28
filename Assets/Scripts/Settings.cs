@@ -1,41 +1,39 @@
-using System;
-using System.IO;
-using UnityEngine;
 
-// Reflects the changes as made in Settings.json
-// Imports settings from Settings.json and stores it in the Settings static class
-//      - If you want to make changes to the settings, do it in Settings.json
 public static class Settings
 {
-    public static readonly bool usingKeyboard;
-    public static readonly float predictionRate;
-    public static readonly int[] activeGrasps;
-
-    private static string filePath = Application.persistentDataPath + "/Settings.json";
-
-    static Settings()
+    public enum InputModality
     {
-        if (File.Exists(filePath))
-        {
-            string loadSettingsData = File.ReadAllText(filePath);
-            SettingsData settingsData = JsonUtility.FromJson<SettingsData>(loadSettingsData);
-
-            usingKeyboard = settingsData.UsingKeyboard;
-            predictionRate = settingsData.PredictionRate;
-            activeGrasps = settingsData.ActiveGrasps;
-
-        } else
-        {
-            throw new Exception("No Settings.json file to load!");
-        }
+        keyboard, // 0
+        matlabRTC, // 1
+        csvFile // 2
     }
 
-    // Helper class for loading data
-    private class SettingsData
+    public static readonly InputModality inputModality = InputModality.keyboard;
+    public static readonly float predictionRate = 0.100f;
+    public static readonly bool fullyOpenToChangeGrasp = true; // Future bug fix required!
+
+    public static readonly bool isNoiseEnabled = true;
+    // TODO: Right now it doesn't do anything when max or min is reached; what we want is to keep evaluating if noise is on
+    //       For example: The hand won't be perfectly still when open, it'll be jittering
+
+    public class GaussianNoise
     {
-        public bool UsingKeyboard;
-        public float PredictionRate;
-        public int[] ActiveGrasps;
+        public static float stdDev = 0.025f; // deg
     }
 
+    public class MajorityVoting
+    {
+        public static bool enabled = false;
+        public static int bufferSize = 5;
+    }
+
+
+    public static GraspTypes[] activeGrasps =
+    {
+        GraspTypes.IndexFlexion,
+        GraspTypes.Key,
+        GraspTypes.Pinch
+    };
+
+    
 }

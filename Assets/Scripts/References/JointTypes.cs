@@ -1,8 +1,8 @@
-public static class JointNames
+public static class JointTypes
 {
-    public enum JointName
+    public enum JointNames
     {
-        wristFlexion, // 0
+        wristFlexionExtension, // 0
         wristRotation, // 1
         indexJoint0, // 2
         indexJoint1, // 3
@@ -19,5 +19,21 @@ public static class JointNames
         thumbJoint0, // 14
         thumbJoint1, // 15
         thumbJoint2 // 16
+    }
+
+    // Local axis of rotation
+    public enum JointAxis
+    {
+        x, // 0
+        y, // 1
+        z // 2
+    }
+
+    // When closing the grasp, does the localRotation increase or decrease?
+    public enum DirectionOfJointClosing
+    {
+        negative, // 0
+        positive, // 1
+        neutral // 2
     }
 }

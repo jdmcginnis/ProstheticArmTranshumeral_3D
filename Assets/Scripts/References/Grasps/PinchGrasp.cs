@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-public class PinchGrasp : IGraspFormat
+public class PinchGrasp : GraspProperties
 {
-    public float[] maxJointAngles { get; set; } = new float[]
+    public override float[] maxJointAngles { get; set; } = new float[]
     {
         0, // WristFlexion
         0, // WristRotation
@@ -24,4 +21,6 @@ public class PinchGrasp : IGraspFormat
         5, // ThumbJoint1
         20 // ThumbJoint2
     };
+
+    public override float jointSpeed { get; set; } = 250;
 }

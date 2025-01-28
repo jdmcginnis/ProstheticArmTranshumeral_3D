@@ -1,27 +1,29 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-public class OpenGrasp : IGraspFormat
+public class OpenGrasp : GraspProperties
 {
-    public float[] maxJointAngles { get; set; } = new float[]
+
+    // Defines the hand at rest; going from making another grasp
+    // Hand is naturally open; not perfectly open (not all angles are 0)
+    public override float[] maxJointAngles { get; set; } = new float[]
     {
         0, // WristFlexion
         0, // WristRotation
-        0, // IndexJoint0
-        0, // IndexJoint1
-        0, // IndexJoint2
-        0, // MiddleJoint0
-        0, // MiddleJoint1
-        0, // MiddleJoint2
-        0, // RingJoint0
-        0, // RingJoint1
-        0, // RingJoint2
-        0, // PinkyJoint0
-        0, // PinkyJoint1
-        0, // PinkyJoint2
-        0, // ThumbJoint0
-        0, // ThumbJoint1
-        0 // ThumbJoint2
+        -5.3f, // IndexJoint0
+        -3.9f, // IndexJoint1
+        -5.1f, // IndexJoint2
+        -2.7f, // MiddleJoint0
+        -5.0f, // MiddleJoint1
+        -7.4f, // MiddleJoint2
+        -3.1f, // RingJoint0
+        -5.3f, // RingJoint1
+        -7.9f, // RingJoint2
+        -5.5f, // PinkyJoint0
+        -3.7f, // PinkyJoint1
+        -5.4f, // PinkyJoint2
+        -45.6f, // ThumbJoint0
+        35.1f, // ThumbJoint1
+        -6.0f // ThumbJoint2
     };
+
+    public override float jointSpeed { get; set; } = 250;
 }

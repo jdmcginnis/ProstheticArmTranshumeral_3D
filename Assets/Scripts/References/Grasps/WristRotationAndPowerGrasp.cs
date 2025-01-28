@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
-public class WristRotationAndPowerGrasp : IGraspFormat
+public class WristRotationAndPowerGrasp : GraspProperties
 {
-    public float[] maxJointAngles { get; set; } = new float[]
+    public override float[] maxJointAngles { get; set; } = new float[]
     {
         0, // WristFlexion
         85, // WristRotation
@@ -24,4 +21,6 @@ public class WristRotationAndPowerGrasp : IGraspFormat
         9, // ThumbJoint1
         58 // ThumbJoint2
     };
+
+    public override float jointSpeed { get; set; } = 250;
 }
