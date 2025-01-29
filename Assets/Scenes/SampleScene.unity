@@ -378,6 +378,88 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
+--- !u!1 &605557697
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 605557699}
+  - component: {fileID: 605557698}
+  m_Layer: 6
+  m_Name: CSV
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &605557698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 605557697}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6c40e488613297b46bf24e2d3354cc7d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inputManager: {fileID: 8254740461057540546}
+  cameraFPS: 60
+  jointAngleOffsets:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  jointAngles:
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+  - 0
+--- !u!4 &605557699
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 605557697}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 980659285}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &805057127
 GameObject:
   m_ObjectHideFlags: 0
@@ -453,6 +535,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 805057129}
+  - {fileID: 605557699}
   m_Father: {fileID: 6518211191659032070}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &68596808411949888
@@ -487,8 +570,14 @@ MonoBehaviour:
   jointName: 16
   jointAxis: 2
   jointCloseRotDirection: 1
-  rigidbody: {fileID: 0}
-  collider: {fileID: 0}
+  minJointAngle: 0
+  targetAngle: 0
+  noisyTargetAngle: 0
+  maxJointAngle: 0
+  jointIncAmt: 0
+  canJointMove: 0
+  rotateFromEuler: {x: 0, y: 0, z: 0}
+  rotateToEuler: {x: 0, y: 0, z: 0}
 --- !u!1 &133983850747421060
 GameObject:
   m_ObjectHideFlags: 0
@@ -834,8 +923,14 @@ MonoBehaviour:
   jointName: 15
   jointAxis: 2
   jointCloseRotDirection: 1
-  rigidbody: {fileID: 0}
-  collider: {fileID: 0}
+  minJointAngle: 0
+  targetAngle: 0
+  noisyTargetAngle: 0
+  maxJointAngle: 0
+  jointIncAmt: 0
+  canJointMove: 0
+  rotateFromEuler: {x: 0, y: 0, z: 0}
+  rotateToEuler: {x: 0, y: 0, z: 0}
 --- !u!136 &608062249735307358
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1079,8 +1174,14 @@ MonoBehaviour:
   jointName: 4
   jointAxis: 0
   jointCloseRotDirection: 0
-  rigidbody: {fileID: 0}
-  collider: {fileID: 0}
+  minJointAngle: 0
+  targetAngle: 0
+  noisyTargetAngle: 0
+  maxJointAngle: 0
+  jointIncAmt: 0
+  canJointMove: 0
+  rotateFromEuler: {x: 0, y: 0, z: 0}
+  rotateToEuler: {x: 0, y: 0, z: 0}
 --- !u!4 &2205119148965848325
 Transform:
   m_ObjectHideFlags: 0
@@ -1652,8 +1753,14 @@ MonoBehaviour:
   jointName: 5
   jointAxis: 0
   jointCloseRotDirection: 0
-  rigidbody: {fileID: 0}
-  collider: {fileID: 0}
+  minJointAngle: 0
+  targetAngle: 0
+  noisyTargetAngle: 0
+  maxJointAngle: 0
+  jointIncAmt: 0
+  canJointMove: 0
+  rotateFromEuler: {x: 0, y: 0, z: 0}
+  rotateToEuler: {x: 0, y: 0, z: 0}
 --- !u!4 &3413138115137516075
 Transform:
   m_ObjectHideFlags: 0
@@ -2103,8 +2210,14 @@ MonoBehaviour:
   jointName: 2
   jointAxis: 0
   jointCloseRotDirection: 0
-  rigidbody: {fileID: 0}
-  collider: {fileID: 0}
+  minJointAngle: 0
+  targetAngle: 0
+  noisyTargetAngle: 0
+  maxJointAngle: 0
+  jointIncAmt: 0
+  canJointMove: 0
+  rotateFromEuler: {x: 0, y: 0, z: 0}
+  rotateToEuler: {x: 0, y: 0, z: 0}
 --- !u!1 &5192738478586590065
 GameObject:
   m_ObjectHideFlags: 0
@@ -2160,8 +2273,14 @@ MonoBehaviour:
   jointName: 1
   jointAxis: 1
   jointCloseRotDirection: 0
-  rigidbody: {fileID: 0}
-  collider: {fileID: 0}
+  minJointAngle: 0
+  targetAngle: 0
+  noisyTargetAngle: 0
+  maxJointAngle: 0
+  jointIncAmt: 0
+  canJointMove: 0
+  rotateFromEuler: {x: 0, y: 0, z: 0}
+  rotateToEuler: {x: 0, y: 0, z: 0}
 --- !u!114 &5351526350195266113
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2178,8 +2297,14 @@ MonoBehaviour:
   jointName: 13
   jointAxis: 0
   jointCloseRotDirection: 0
-  rigidbody: {fileID: 0}
-  collider: {fileID: 0}
+  minJointAngle: 0
+  targetAngle: 0
+  noisyTargetAngle: 0
+  maxJointAngle: 0
+  jointIncAmt: 0
+  canJointMove: 0
+  rotateFromEuler: {x: 0, y: 0, z: 0}
+  rotateToEuler: {x: 0, y: 0, z: 0}
 --- !u!4 &5359000369437669062
 Transform:
   m_ObjectHideFlags: 0
@@ -2235,8 +2360,14 @@ MonoBehaviour:
   jointName: 10
   jointAxis: 0
   jointCloseRotDirection: 0
-  rigidbody: {fileID: 0}
-  collider: {fileID: 0}
+  minJointAngle: 0
+  targetAngle: 0
+  noisyTargetAngle: 0
+  maxJointAngle: 0
+  jointIncAmt: 0
+  canJointMove: 0
+  rotateFromEuler: {x: 0, y: 0, z: 0}
+  rotateToEuler: {x: 0, y: 0, z: 0}
 --- !u!1 &5719838768669016367
 GameObject:
   m_ObjectHideFlags: 0
@@ -2591,8 +2722,14 @@ MonoBehaviour:
   jointName: 11
   jointAxis: 0
   jointCloseRotDirection: 0
-  rigidbody: {fileID: 0}
-  collider: {fileID: 0}
+  minJointAngle: 0
+  targetAngle: 0
+  noisyTargetAngle: 0
+  maxJointAngle: 0
+  jointIncAmt: 0
+  canJointMove: 0
+  rotateFromEuler: {x: 0, y: 0, z: 0}
+  rotateToEuler: {x: 0, y: 0, z: 0}
 --- !u!1 &6493357379252941523
 GameObject:
   m_ObjectHideFlags: 0
@@ -2668,8 +2805,14 @@ MonoBehaviour:
   jointName: 6
   jointAxis: 0
   jointCloseRotDirection: 0
-  rigidbody: {fileID: 0}
-  collider: {fileID: 0}
+  minJointAngle: 0
+  targetAngle: 0
+  noisyTargetAngle: 0
+  maxJointAngle: 0
+  jointIncAmt: 0
+  canJointMove: 0
+  rotateFromEuler: {x: 0, y: 0, z: 0}
+  rotateToEuler: {x: 0, y: 0, z: 0}
 --- !u!1 &6690776100509960335
 GameObject:
   m_ObjectHideFlags: 0
@@ -2922,8 +3065,14 @@ MonoBehaviour:
   jointName: 7
   jointAxis: 0
   jointCloseRotDirection: 0
-  rigidbody: {fileID: 0}
-  collider: {fileID: 0}
+  minJointAngle: 0
+  targetAngle: 0
+  noisyTargetAngle: 0
+  maxJointAngle: 0
+  jointIncAmt: 0
+  canJointMove: 0
+  rotateFromEuler: {x: 0, y: 0, z: 0}
+  rotateToEuler: {x: 0, y: 0, z: 0}
 --- !u!114 &7818085680993996855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2940,8 +3089,14 @@ MonoBehaviour:
   jointName: 14
   jointAxis: 2
   jointCloseRotDirection: 1
-  rigidbody: {fileID: 0}
-  collider: {fileID: 0}
+  minJointAngle: 0
+  targetAngle: 0
+  noisyTargetAngle: 0
+  maxJointAngle: 0
+  jointIncAmt: 0
+  canJointMove: 0
+  rotateFromEuler: {x: 0, y: 0, z: 0}
+  rotateToEuler: {x: 0, y: 0, z: 0}
 --- !u!137 &7859397573864020497
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 0
@@ -3030,8 +3185,14 @@ MonoBehaviour:
   jointName: 12
   jointAxis: 0
   jointCloseRotDirection: 0
-  rigidbody: {fileID: 0}
-  collider: {fileID: 0}
+  minJointAngle: 0
+  targetAngle: 0
+  noisyTargetAngle: 0
+  maxJointAngle: 0
+  jointIncAmt: 0
+  canJointMove: 0
+  rotateFromEuler: {x: 0, y: 0, z: 0}
+  rotateToEuler: {x: 0, y: 0, z: 0}
 --- !u!4 &8146356146133534655
 Transform:
   m_ObjectHideFlags: 0
@@ -3094,6 +3255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   keyboardInputManagerObj: {fileID: 805057127}
+  csvInputManagerObj: {fileID: 605557697}
   handGraspManager: {fileID: 3296747721042313568}
 --- !u!4 &8311931799308434736
 Transform:
@@ -3238,8 +3400,14 @@ MonoBehaviour:
   jointName: 8
   jointAxis: 0
   jointCloseRotDirection: 0
-  rigidbody: {fileID: 0}
-  collider: {fileID: 0}
+  minJointAngle: 0
+  targetAngle: 0
+  noisyTargetAngle: 0
+  maxJointAngle: 0
+  jointIncAmt: 0
+  canJointMove: 0
+  rotateFromEuler: {x: 0, y: 0, z: 0}
+  rotateToEuler: {x: 0, y: 0, z: 0}
 --- !u!4 &8906774519393998379
 Transform:
   m_ObjectHideFlags: 0
@@ -3272,8 +3440,14 @@ MonoBehaviour:
   jointName: 0
   jointAxis: 0
   jointCloseRotDirection: 2
-  rigidbody: {fileID: 0}
-  collider: {fileID: 0}
+  minJointAngle: 0
+  targetAngle: 0
+  noisyTargetAngle: 0
+  maxJointAngle: 0
+  jointIncAmt: 0
+  canJointMove: 0
+  rotateFromEuler: {x: 0, y: 0, z: 0}
+  rotateToEuler: {x: 0, y: 0, z: 0}
 --- !u!4 &8931825851610750500
 Transform:
   m_ObjectHideFlags: 0
@@ -3305,8 +3479,14 @@ MonoBehaviour:
   jointName: 3
   jointAxis: 0
   jointCloseRotDirection: 0
-  rigidbody: {fileID: 0}
-  collider: {fileID: 0}
+  minJointAngle: 0
+  targetAngle: 0
+  noisyTargetAngle: 0
+  maxJointAngle: 0
+  jointIncAmt: 0
+  canJointMove: 0
+  rotateFromEuler: {x: 0, y: 0, z: 0}
+  rotateToEuler: {x: 0, y: 0, z: 0}
 --- !u!4 &9037375042430762274
 Transform:
   m_ObjectHideFlags: 0
@@ -3410,8 +3590,14 @@ MonoBehaviour:
   jointName: 9
   jointAxis: 0
   jointCloseRotDirection: 0
-  rigidbody: {fileID: 0}
-  collider: {fileID: 0}
+  minJointAngle: 0
+  targetAngle: 0
+  noisyTargetAngle: 0
+  maxJointAngle: 0
+  jointIncAmt: 0
+  canJointMove: 0
+  rotateFromEuler: {x: 0, y: 0, z: 0}
+  rotateToEuler: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

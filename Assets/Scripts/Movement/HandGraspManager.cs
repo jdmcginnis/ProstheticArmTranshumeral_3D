@@ -53,9 +53,8 @@ public class HandGraspManager : MonoBehaviour
     }
 
     // TODO: Directly sets joint angles; an alternative to gradually incrementing/decrementing
-    public void SetJointAngles()
+    public void SetJointAngles(float[] newJointAngles)
     {
-        float[] newJointAngles = { 1, 1, 1 }; // TODO: Change to get array of values from InputManager
         SetNewJointAngles?.Invoke(newJointAngles);
     }
 

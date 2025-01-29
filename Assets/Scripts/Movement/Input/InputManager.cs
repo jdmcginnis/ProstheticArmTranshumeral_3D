@@ -7,6 +7,7 @@ using System.Linq;
 public class InputManager : MonoBehaviour
 {
     [SerializeField] private GameObject keyboardInputManagerObj;
+    [SerializeField] private GameObject csvInputManagerObj;
     [SerializeField] private HandGraspManager handGraspManager;
 
     private PlayerInput playerInput;
@@ -16,6 +17,7 @@ public class InputManager : MonoBehaviour
     {
         // Verify all input managers are initially inactive
         keyboardInputManagerObj.SetActive(false);
+        csvInputManagerObj.SetActive(false);
 
         ConfigureMajorityVoting();
 
@@ -36,6 +38,9 @@ public class InputManager : MonoBehaviour
         if (Settings.inputModality == Settings.InputModality.keyboard)
         {
             InitializeKeyboardInput();
+        } else if (Settings.inputModality == Settings.InputModality.csvFile)
+        {
+            InitializeCSVInput();
         }
     }
 
@@ -50,7 +55,13 @@ public class InputManager : MonoBehaviour
         keyboardInputManagerObj.GetComponent<KeyboardInputManager>().InitializeKeyboardInput(playerInput);
     }
 
-    public void HandleNewInput(GraspTypes newGraspInput)
+    private void InitializeCSVInput()
+    {
+        csvInputManagerObj.SetActive(true);
+        csvInputManagerObj.GetComponent<CSVInputManager>().InitializeCSVInput();
+    }
+
+    public void HandleNewClassificationInput(GraspTypes newGraspInput)
     {
         GraspTypes graspPrediction;
 
@@ -75,7 +86,10 @@ public class InputManager : MonoBehaviour
 
     }
 
-
+    public void HandleNewAngleInput(float[] jointAngles)
+    {
+        handGraspManager.SetJointAngles(jointAngles);
+    }
 }
 
 
@@ -97,7 +111,7 @@ public class InputManager : MonoBehaviour
 //        matlabInputObj.SetActive(false);
 //    } else
 //    {
-//        Time.fixedDeltaTime = Settings.predictionRate;
+//        Time.fixedDeltaTime = Settings.predictionRate; // DOn't set here; set in RTC handler script!
 //        keyboardInputObj.SetActive(false);
 //        matlabInputObj.SetActive(true);
 //    }

@@ -18,7 +18,7 @@ public static class Settings
 
     public class GaussianNoise
     {
-        public static float stdDev = 0.025f; // deg
+        public static float stdDev = 5f; // deg
     }
 
     public class MajorityVoting

@@ -63,7 +63,7 @@ public class KeyboardInputManager : MonoBehaviour
 
         while (true)
         {
-            inputManager.HandleNewInput(keyHeldDown);
+            inputManager.HandleNewClassificationInput(keyHeldDown);
             yield return new WaitForFixedUpdate();
         }
     }

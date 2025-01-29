@@ -19,7 +19,10 @@ public class HandJointDriver : MonoBehaviour
     public float maxJointAngle; // deg
     private float jointSpeed; // deg/s
     public float jointIncAmt; // deg increment per fixed timestep
-    public bool canJointMove; 
+    public bool canJointMove;
+
+    public Vector3 rotateFromEuler;
+    public Vector3 rotateToEuler;
 
     private void OnEnable()
     {
@@ -64,12 +67,12 @@ public class HandJointDriver : MonoBehaviour
             // Prevents overshooting the joint limit
             if (jointCloseRotDirection == DirectionOfJointClosing.negative)
             {
-                if (noisyTargetAngle > minJointAngle)
-                    noisyTargetAngle = minJointAngle;
+                if (targetAngle > minJointAngle)
+                    targetAngle = minJointAngle;
             } else
             {
-                if (noisyTargetAngle < minJointAngle)
-                    noisyTargetAngle = minJointAngle;
+                if (targetAngle < minJointAngle)
+                    targetAngle = minJointAngle;
             }
         }
 
@@ -167,22 +170,111 @@ public class HandJointDriver : MonoBehaviour
     // Ignores joint limits
     private void MoveJointToAngle(float[] newJointAngles)
     {
-        targetAngle = newJointAngles[(int)jointName];
+        targetAngle = minJointAngle + newJointAngles[(int)jointName];
         RotateJoint(false);
     }
 
     // Rotates the joint to the desired angle
     private void RotateJoint(bool isNoiseEnabled)
     {
-        Vector3 rotateFrom = this.transform.localRotation.eulerAngles;
+        // Too apathetic to check how this works, but it does
+        float NormalizeAngle(float angle)
+        {
+            return (angle > 180) ? angle - 360 : angle;
+        }
 
+        rotateFromEuler = transform.localEulerAngles;
+        rotateToEuler = rotateFromEuler;
+
+
+        // my edition here
         if (isNoiseEnabled)
-            rotateFrom[(int)jointAxis] = noisyTargetAngle;
+            rotateToEuler[(int)jointAxis] = noisyTargetAngle;
         else
-            rotateFrom[(int)jointAxis] = targetAngle;
+            rotateToEuler[(int)jointAxis] = targetAngle;
 
-        Quaternion rotateTo = Quaternion.Euler(rotateFrom);
-        this.transform.localRotation = rotateTo;
+
+
+        transform.localEulerAngles = rotateToEuler;
+
+        // Normalize after setting
+        rotateToEuler[(int)jointAxis] = NormalizeAngle(transform.localEulerAngles[(int)jointAxis]);
+        transform.localEulerAngles = rotateToEuler;
+
+
+
+        //Quaternion rotateFrom = this.transform.localRotation;
+        //rotateFromEuler = rotateFrom.eulerAngles;
+
+        //if (jointCloseRotDirection == DirectionOfJointClosing.negative)
+        //{
+        //    rotateFromEuler.x = (rotateFromEuler.x - 360) % 360;
+        //    rotateFromEuler.y = (rotateFromEuler.y - 360) % 360;
+        //    rotateFromEuler.z = (rotateFromEuler.z - 360) % 360;
+        //}
+
+        //rotateToEuler = rotateFromEuler;
+
+        //if (isNoiseEnabled)
+        //    rotateToEuler[(int)jointAxis] = noisyTargetAngle;
+        //else
+        //    rotateToEuler[(int)jointAxis] = targetAngle;
+
+        //Quaternion rotateTo = Quaternion.Euler(rotateToEuler);
+
+        //this.transform.localRotation = rotateTo;
+
+        // rotateFrom.SetFromToRotation(rotateFromEuler, rotateToEuler);
+
+
+
+
+        //// BUG: Wraps around when it hits 360 degrees
+
+        //Quaternion rotateFrom = this.transform.localRotation;
+
+        ////if (rotateFrom.w < 0f)
+        ////{
+        ////    // The rotation is greater than 180 degrees (long way around the sphere). Convert to shortest path.
+        ////    rotateFrom.x = -rotateFrom.x;
+        ////    rotateFrom.y = -rotateFrom.y;
+        ////    rotateFrom.z = -rotateFrom.z;
+        ////    rotateFrom.w = -rotateFrom.w;
+
+        ////}
+
+        //// Vector3 rotateFromEuler = rotateFrom.eulerAngles;
+        //rotateFromEuler = rotateFrom.eulerAngles;
+
+        ////rotateFromEuler.x = rotateFromEuler.x % 360;
+        ////rotateFromEuler.y = rotateFromEuler.y % 360;
+        ////rotateFromEuler.z = rotateFromEuler.z % 360;
+
+        //rotateToEuler = rotateFromEuler;
+
+        //if (isNoiseEnabled)
+        //    rotateToEuler[(int)jointAxis] = noisyTargetAngle;
+        //else
+        //    rotateToEuler[(int)jointAxis] = targetAngle;
+
+        //rotateToEuler.x = rotateToEuler.x % 360;
+        //rotateToEuler.y = rotateToEuler.y % 360;
+        //rotateToEuler.z = rotateToEuler.z % 360;
+
+        //Quaternion rotateTo = Quaternion.Euler(rotateToEuler);
+
+        ////if (rotateTo.w < 0f)
+        ////{
+        ////    // The rotation is greater than 180 degrees (long way around the sphere). Convert to shortest path.
+        ////    rotateTo.x = -rotateTo.x;
+        ////    rotateTo.y = -rotateTo.y;
+        ////    rotateTo.z = -rotateTo.z;
+        ////    rotateTo.w = -rotateTo.w;
+
+        ////}
+
+        //this.transform.localRotation = rotateTo;
+
     }
 
     private void AcquireNewJointPropertiesFromGrasp(GraspProperties newGraspObj)
